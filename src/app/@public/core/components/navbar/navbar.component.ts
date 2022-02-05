@@ -1,7 +1,6 @@
 import { IMeData } from '@core/interfaces/session.interface';
 import { AuthService } from '@core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-navbar',

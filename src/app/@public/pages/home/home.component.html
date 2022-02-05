@@ -1,1 +1,16 @@
-<p>home works!</p>
+<!-- ======= Hero Section ======= -->
+<!--<section id="hero">
+    <shop-carousel-items [items]="items"></shop-carousel-items>
+</section>-->
+<!-- End Hero -->
+<shop-carousel-items [items]="items"></shop-carousel-items>
+<app-product-category-list *ngIf="listOne"
+[title]="'Cartelera'"
+[productsList]="listOne"
+></app-product-category-list>
+
+<app-product-category-list *ngIf="listOne"
+[title]="'Proximamente'"
+[productsList]="listOne"
+></app-product-category-list>
+

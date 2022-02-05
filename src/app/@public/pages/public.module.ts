@@ -7,7 +7,6 @@ import { HeaderComponent } from '@film-core/components/header/header.component';
 import { NavbarComponent } from '@film-core/components/navbar/navbar.component';
 import { FooterComponent } from '@film-core/components/footer/footer.component';
 
-
 @NgModule({
   declarations: [PublicComponent, HeaderComponent, NavbarComponent, FooterComponent],
   imports: [
