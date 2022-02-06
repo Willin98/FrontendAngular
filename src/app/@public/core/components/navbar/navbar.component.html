@@ -13,22 +13,13 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item active" *ngFor="let item of menuItems">
         <a
           class="nav-link scrollto active"
           class="nav-link"
-          [routerLink]="['/']"
+          [routerLink]="item.url"
           routerLinkActive="router-link-active"
-          >Home</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link scrollto"
-          class="nav-link"
-          [routerLink]="['/contact']"
-          routerLinkActive="router-link-active"
-          >Contact</a
+          >{{ item.label }}</a
         >
       </li>
     </ul>
