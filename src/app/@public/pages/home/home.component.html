@@ -3,14 +3,100 @@
     <shop-carousel-items [items]="items"></shop-carousel-items>
 </section>-->
 <!-- End Hero -->
-<shop-carousel-items [items]="items"></shop-carousel-items>
-<app-product-category-list *ngIf="listOne"
-[title]="'Cartelera'"
-[productsList]="listOne"
-></app-product-category-list>
 
-<app-product-category-list *ngIf="listOne"
+<section id="hero">
+  <div
+    id="heroCarousel"
+    data-bs-interval="5000"
+    class="carousel slide carousel-fade"
+    data-bs-ride="carousel"
+  >
+    <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+    <div *ngFor="let item of listTwo" class="carousel-inner" role="listbox">
+      <!-- Slide 1 -->
+      <div
+        class="carousel-item active"
+        style="background-image: url({{item.img}})"
+      >
+        <div class="carousel-container">
+          <div class="container">
+            <h2 class="animated fadeInDown">{{ item.name }}</h2>
+            <!--<p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+              <a href="#about" class="btn-get-started animated fadeInUp scrollto">Read More</a>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <a
+      class="carousel-control-prev"
+      href="#heroCarousel"
+      role="button"
+      data-bs-slide="prev"
+    >
+      <span
+        class="carousel-control-prev-icon bi bi-chevron-left"
+        aria-hidden="true"
+      ></span>
+    </a>
+    <a
+      class="carousel-control-next"
+      href="#heroCarousel"
+      role="button"
+      data-bs-slide="next"
+    >
+      <span
+        class="carousel-control-next-icon bi bi-chevron-right"
+        aria-hidden="true"
+      ></span>
+    </a>
+  </div>
+</section>
+<!-- End Hero -->
+
+<!-- ======= Main Section ======= -->
+<main id="main">
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact section-bg p-12">
+    <div class="container-fluid">
+      <!-- ======= Team Section ======= -->
+      <section id="team" class="team">
+        <div class="container-fluid">
+          <div class="section-title">
+            <h2>Cartelera</h2>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-xl-10">
+              <div class="row">
+                <div
+                  class="col-xl-3 col-lg-4 col-md-6"
+                  *ngFor="let item of listOne"
+                >
+                  <div class="member">
+                    <img src="{{ item.poster }}" class="img-fluid" alt="" />
+                    <div class="member-info">
+                      <div class="member-info-content">
+                        <h4>{{ item.name }}</h4>
+                        <span>Proximamente</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Member Item -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Team Section -->
+    </div>
+  </section>
+  <!-- End Contact Section -->
+</main>
+<!-- End #main -->
+
+<!--<app-product-category-list *ngIf="listOne"
 [title]="'Proximamente'"
 [productsList]="listOne"
-></app-product-category-list>
-
+></app-product-category-list>-->

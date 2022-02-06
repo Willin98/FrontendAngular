@@ -9,6 +9,7 @@ export const SHOP_FILM_FRAGMENTE = gql`
     film {
       name
       poster
+      img
     }
   }
 `;

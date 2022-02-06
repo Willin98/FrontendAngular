@@ -4,7 +4,7 @@ import { ApiService } from '@graphql/services/api.service';
 import { SHOP_FILM_BY_PLATFORM } from '@graphql/operations/query/shop-film';
 import { ACTIVE_FILTERS } from '@core/constants/filters';
 import { map } from 'rxjs/internal/operators/map';
-import { IProduct } from '@mugan86/ng-shop-ui/lib/interfaces/product.interface';
+import { IfilmItem } from '@core/interfaces/film-home.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,14 +29,14 @@ export class FilmsService extends ApiService {
       }
     ).pipe(map((result: any) => {
       const filmList_ = result.shopFilms.shopFilms;
-      const resultList: Array<IProduct> = [];
+      const resultList: Array<IfilmItem> = [];
       filmList_.map((shopObject) => {
         resultList.push({
           id: shopObject.id,
-          img: shopObject.film.poster,
+          poster: shopObject.film.poster,
           name: shopObject.film.name,
-          description: '',
-          rating: null,
+          description: shopObject.film.description,
+          img: shopObject.film.img,
           qty: 1,
           price: shopObject.price,
           stock: shopObject.stock
