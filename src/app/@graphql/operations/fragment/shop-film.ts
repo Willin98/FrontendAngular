@@ -10,6 +10,18 @@ export const SHOP_FILM_FRAGMENTE = gql`
       name
       poster
       img
+      description
+    }
+    platform @include (if: $showPlatform){
+      id
+      name
+      slug
+    }
+    relationalFilms @include(if: $relationalScreens){
+      id
+      platform {
+        name
+      }
     }
   }
 `;

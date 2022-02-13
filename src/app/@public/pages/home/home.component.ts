@@ -1,3 +1,5 @@
+import { IfilmItem } from '@core/interfaces/film-home.interface';
+import { Router } from '@angular/router';
 import { FilmsService } from '@core/services/films.service';
 import { UsersService } from '@core/services/users.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,8 +15,8 @@ export class HomeComponent implements OnInit {
   //fimlItems: Array<IMenuItem> = shopFilmItems;
   items;
   listTwo;
-  loading: boolean;
-  constructor(private usersApi: UsersService, private films: FilmsService) {}
+  film: IfilmItem;
+  constructor(private usersApi: UsersService, private films: FilmsService, private router: Router) {}
   
   ngOnInit(): void {
     loadData('Cargando informacion', '');
@@ -27,11 +29,17 @@ export class HomeComponent implements OnInit {
     });
     this.usersApi.getUsers(2,1).subscribe((result) => {
       console.log(result);
+      url: '/film/details/'.concat(result.id);
     });
     closeAlert();
   }
   
   open(i: number) {
-    
   }
+
+  showDetails(item: IfilmItem) {
+    console.log('deatlesssss', item.id);
+    this.router.navigate(['/films/details', +item.id]);
+  }
+
 }

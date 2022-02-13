@@ -36,6 +36,10 @@ const routes: Routes = [
         path: 'reset/:token',
         loadChildren: () => import('./forms/change-password/change-password.module').then(m => m.ChangePasswordModule)
       },
+      {
+        path: 'films/details/:id',
+        loadChildren: () => import('./films/details/details.module').then(m => m.DetailsModule)
+      },
     ]
   }
 ];

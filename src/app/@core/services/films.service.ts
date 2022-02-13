@@ -1,3 +1,4 @@
+import { SHOP_FILM_DETAILS } from './../../@graphql/operations/query/shop-film';
 import { Apollo } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import { ApiService } from '@graphql/services/api.service';
@@ -31,18 +32,36 @@ export class FilmsService extends ApiService {
       const filmList_ = result.shopFilms.shopFilms;
       const resultList: Array<IfilmItem> = [];
       filmList_.map((shopObject) => {
-        resultList.push({
-          id: shopObject.id,
-          poster: shopObject.film.poster,
-          name: shopObject.film.name,
-          description: shopObject.film.description,
-          img: shopObject.film.img,
-          qty: 1,
-          price: shopObject.price,
-          stock: shopObject.stock
-        })
+        resultList.push(this.setInObject(shopObject));
       });
       return resultList;
+    }));
+  }
+
+  private setInObject (shopObject){
+    return {
+      id: shopObject.id,
+      poster: shopObject.film.poster,
+      name: shopObject.film.name,
+      description: shopObject.film.description,
+      img: shopObject.film.img,
+      qty: 1,
+      price: shopObject.price,
+      stock: shopObject.stock,
+    };
+  }
+  getItem(id: string) {
+    return this.get(
+      SHOP_FILM_DETAILS, {
+        id
+      }, { }, false
+    ).pipe(map((result: any) => {
+      const data = result.shopFilmDetails;
+      return {
+        films: this.setInObject(data.shopFilm),
+        relational: data.shopFilm.relationalFilms,
+        platform: data.shopFilm.platform
+      };
     }));
   }
 }

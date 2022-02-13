@@ -14,4 +14,5 @@ export interface IfilmItem {
     price: number;
     qty?: number;
     img: string;
+    platform?: string;
 }
