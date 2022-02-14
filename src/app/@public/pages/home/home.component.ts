@@ -5,6 +5,7 @@ import { UsersService } from '@core/services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { ACTIVE_FILTERS } from '@core/constants/filters';
 import { loadData, closeAlert } from '@shared/alerts/alerts';
+import { CartService } from '@film/core/services/cart.service.ts.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
   items;
   listTwo;
   film: IfilmItem;
-  constructor(private usersApi: UsersService, private films: FilmsService, private router: Router) {}
+  constructor(private usersApi: UsersService, private films: FilmsService, private router: Router, private cartService: CartService) {}
   
   ngOnInit(): void {
     loadData('Cargando informacion', '');
@@ -40,6 +41,10 @@ export class HomeComponent implements OnInit {
   showDetails(item: IfilmItem) {
     console.log('deatlesssss', item.id);
     this.router.navigate(['/films/details', +item.id]);
+  }
+
+  addToCart(item: IfilmItem) {
+    this.cartService.manageFilm(item);
   }
 
 }

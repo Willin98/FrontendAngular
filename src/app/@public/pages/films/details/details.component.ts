@@ -1,9 +1,9 @@
 import { ActivatedRoute } from '@angular/router';
 import { FilmsService } from '@core/services/films.service';
 import { Component, OnInit } from '@angular/core';
-import { CURRENCIES_SYMBOL, CURRENCY_LIST } from '@mugan86/ng-shop-ui';
 import { IfilmItem } from '@core/interfaces/film-home.interface';
 import { loadData, closeAlert } from '@shared/alerts/alerts';
+import { CURRENCY_SELECT } from '@core/constants/config';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -17,7 +17,7 @@ export class DetailsComponent implements OnInit {
   platform: string;
   loading: boolean;
   relationalFilms: Array<Object> = [];
-  currency = CURRENCIES_SYMBOL[CURRENCY_LIST.COLOMBIAN_PESO];
+  currency = CURRENCY_SELECT;
   constructor(private filmService: FilmsService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(){
