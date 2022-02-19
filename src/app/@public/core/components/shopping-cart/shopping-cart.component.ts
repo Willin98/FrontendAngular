@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { IfilmItem } from '@core/interfaces/film-home.interface';
 import { ICart } from './shoppin-cart.interface';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,7 @@ import { CURRENCY_SELECT } from '@core/constants/config';
 export class ShoppingCartComponent implements OnInit {
   cart: ICart;
   currency = CURRENCY_SELECT;
-  constructor(private cartService: CartService) { 
+  constructor(private cartService: CartService, private router: Router) { 
     this.cartService.itemsVar$.subscribe((data: ICart) => {
       if (data !== undefined && data !== null) {
         this.cart = data;
@@ -47,6 +48,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   process() {
-    
+    this.router.navigate(['/checkout']);
+    this.closeNav();
   }
 }
